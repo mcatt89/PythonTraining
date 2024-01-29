@@ -217,3 +217,94 @@ view2_arr = source3_arr.view()
 print(copy2_arr.base) #returns 'None' which means this array owns the data
 print(view2_arr.base) #returns the original array which means this array does not own the data
 
+
+#####
+#Shape of an Array
+#####
+
+shape_arr = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
+print(shape_arr.shape)
+
+shape2_arr = np.array([1,2,3,4], ndmin=5)
+print(shape2_arr)
+print('shape of array: ', shape2_arr.shape)
+
+#reshape array
+shape3_arr = np.array([1, 2, 3, 4, 5, 6, 7, 8])
+reshape_arr = shape3_arr.reshape(2,2,-1)
+print(reshape_arr)
+
+#Flatten array
+shape4_arr = np.array([[1, 2, 3], [4, 5, 6]])
+flat_arr = shape4_arr.reshape(-1)
+print(flat_arr)
+
+
+#####
+#Iterating Arrays
+#####
+
+it_arr = np.array([1, 2, 3])
+
+for x in it_arr:
+    print(x)
+
+
+it2_arr = np.array([[1, 2, 3], [4, 5, 6]])
+
+for x in it2_arr:
+    print(x)
+    for y in x:
+        print(y)
+
+
+it3_arr = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
+
+for x in it3_arr:
+    print(x)
+    print('end of x')
+
+
+for x in it3_arr:
+  for y in x:
+    for z in y:
+      print(z)
+
+
+#using nditer on array
+it4_arr = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
+
+for x in np.nditer(it4_arr):
+    print(x)
+
+
+#using op_dtype to change data type to string
+it5_arr = np.array([1, 2, 3])
+
+for x in np.nditer(it5_arr, flags=['buffered'], op_dtypes=['S']):
+   print(x)
+
+
+#iterate through ever scaler element for the 2D array skipping 1 element
+it6_arr = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
+
+for x in np.nditer(it6_arr[:, ::2]):
+   print(x)
+
+#use ndenumerate
+it7_arr = np.array([1, 2, 3])
+
+for idx, x in np.ndenumerate(it7_arr):
+   print(idx, x)
+
+
+it8_arr = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
+
+for idx, x in np.ndenumerate(it8_arr):
+   print(idx, x)
+
+#Start with NumPy Array Join
+   # https://www.w3schools.com/python/numpy/numpy_array_join.asp
+
+
+
