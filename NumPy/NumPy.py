@@ -4,7 +4,8 @@
 # Created January 28, 2024
 
 
-import numpy as np
+#NOTE: Rune this in your terminal every time you resume working with examples in the file
+import numpy as np 
 
 arr = np.array([1,2,3,4,5])
 
@@ -303,8 +304,86 @@ it8_arr = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
 for idx, x in np.ndenumerate(it8_arr):
    print(idx, x)
 
-#Start with NumPy Array Join
-   # https://www.w3schools.com/python/numpy/numpy_array_join.asp
+
+
+#Joining NumPy Arrays
+
+#Join 2 arrays
+
+j_arr1 = np.array([1, 2, 3])
+
+j_arr2 = np.array([4, 5, 6]) 
+
+#puts all items into the single array in the originating order based on the order of arrays
+joined_arr = np.concatenate((j_arr2, j_arr1))
+
+print(joined_arr)
+
+
+#Join 2D arrays
+j2_arr1 = np.array([[1, 2], [3, 4]])
+j2_arr2 = np.array([[5, 6], [7, 8]])
+
+joined2_arr = np.concatenate((j2_arr1, j2_arr2), axis=1)
+print(joined2_arr)
+
+#Stack arrays using first joined arrays
+#creates a multi dimensional array, axis defines how many objects in each dimension
+stacked_arr = np.stack((j_arr1, j_arr2), axis=1)
+print(stacked_arr)
+
+#Stack along rows (horizontal)
+h_stack = np.hstack((j_arr1, j_arr2))
+print(h_stack)
+
+#stack along columns (vertical)
+v_stack = np.vstack((j_arr1,j_arr2))
+print(v_stack)
+
+#stack along height(depth)
+d_stack = np.dstack((j_arr1,j_arr2))
+print(d_stack)
+
+
+
+#Splitting Arrays
+
+#split array into 3 parts
+start_arr = np.array([1, 2, 3, 4, 5, 6])
+split_arr = np.array_split(start_arr, 3)
+print(split_arr)
+
+#split into 4 arrays (the start_array has less elements than required)
+#the last 2 of the new arrays only have one element
+split2_arr = np.array_split(start_arr, 4)
+print(split2_arr)
+
+#Access the split arrays, using split_arr
+print(split_arr[0])
+print(split_arr[1])
+print(split_arr[2])
+
+#split 2D array into three 2D arrays
+start2d_arr = np.array([[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12]])
+split3_arr = np.array_split(start2d_arr, 3)
+print(split3_arr)
+print(split3_arr[0])
+print(split3_arr[1])
+print(split3_arr[2])
+
+#split 2D array into three 2D arrays along rows
+start2d1_arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15], [16, 17, 18]])
+split2drow_arr = np.array_split(start2d1_arr, 3, axis=1)
+print(split2drow_arr)
+
+#hsplit() 2d array into three 2d arrays along rows
+hsplit_arr = np.hsplit(start2d1_arr, 3)
+print(hsplit_arr)
+print(hsplit_arr[0])
+print(hsplit_arr[1])
+print(hsplit_arr[2])
+
+
 
 
 
