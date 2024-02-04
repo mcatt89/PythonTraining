@@ -385,5 +385,307 @@ print(hsplit_arr[2])
 
 
 
+#Searching Arrays
+
+#search with where()
+search_arr = np.array([1, 2, 3, 4, 5, 4, 4])
+
+#this gives the indexes where the value 4 is present
+x = np.where(search_arr == 4)
+print(x)
+
+
+#Search for even values
+search1_arr = np.array([1, 2, 3, 4, 5, 6, 7, 8])
+
+#this gives the indexes for even values
+even = np.where(search1_arr%2 == 0)
+print(even)
+
+
+#Search for odd values in search1_arr
+odd = np.where(search1_arr%2 ==1)
+print(odd)
+
+
+#searchsorted() searches an array to find where a value should be inserted
+ss_arr = np.array([6, 7, 8, 9])
+
+#going left to right, finds the index where 7 is not longer larger than the value
+ss7 = np.searchsorted(ss_arr, 7)
+print(ss7)
+
+#search right to left
+#going right to left, finds the index where 7 is no longer less than the next index
+ss7right = np.searchsorted(ss_arr, 7, side='right')
+print(ss7right)
+
+
+#search multiple values
+ss2_arr = np.array([1, 3, 5, 7])
+
+#returns an array where the values in the search array would be inserted, left to right
+#indexes in the serach and return arrays corrispond
+sm = np.searchsorted(ss2_arr, [2,6,4])
+print(sm)
+
+
+
+#Sorting arrays
+
+sort_arr = np.array([3, 2, 0, 1])
+
+#Prints a copy of the array that has been sorted, original is unchanged
+print(np.sort(sort_arr))
+print(sort_arr)
+
+
+#Sort strings
+sortstring_arr = np.array(['banana', 'cherry', 'apple'])
+print(np.sort(sortstring_arr))
+
+#Sort boolean
+#False, then True  assuming False = 0 and True = 1
+sortbool_arr = np.array([True, False, True])
+print(np.sort(sortbool_arr))
+
+
+#Sort 2D arrays
+sort2d_arr = np.array([[3, 2, 4], [5, 0, 1]])
+
+#Sorts each array independently
+print(np.sort(sort2d_arr))
+
+
+
+#Filtering arrays
+
+#create a boolean filter to use to build a new array 
+#True brings the element to the new array
+
+uf_arr = np.array([41, 42, 43, 44])
+
+#array of boolean values
+filter = [True, False, True, False]
+
+filtered_arr = uf_arr[filter]
+print(filtered_arr)
+
+
+#Conditional Filter
+#Create a filter that will puts elements with a value greater than 42 in a new array
+
+#create empty array
+new_filter = []
+
+#for each loop with if statement to evaluate each element in the array 
+for element in uf_arr:
+   #if it is greater than 42, add to array
+   if element > 42:
+      new_filter.append(True)
+   else:
+      new_filter.append(False)
+
+#apply created filter to source array
+greaterthan42 = uf_arr[new_filter]
+
+print(new_filter)
+print(greaterthan42)
+
+
+#Create a filter that will return even values from an array
+
+uf2_arr = np.array([1, 2, 3, 4, 5, 6, 7])
+
+even_filter = []
+
+for element in uf2_arr:
+   if element % 2 == 0:
+      even_filter.append(True)
+   else:
+      even_filter.append(False)
+
+even_arr = uf2_arr[even_filter]
+
+print(even_filter)
+print(even_arr)
+
+
+#create a filter directly from an array
+
+#filter array for elements greater than 42 in uf_arr
+gt42_filter = uf_arr > 42
+
+gt42_arr = uf_arr[gt42_filter]
+
+print(gt42_filter)
+print(gt42_arr)
+
+
+#Retunr only elements with even values from uf2_arr
+
+e_filter = uf2_arr % 2 == 0
+
+e_arr = uf2_arr[e_filter]
+
+print(e_filter)
+print(e_arr)
+
+
+
+#######
+#NumPry Random
+######
+
+#need to run this, along with the original numpy if working in a new terminal
+#import numpy as np
+from numpy import random
+
+#generate a random integer from 0 to 100
+ri = random.randint(100)
+print(ri)
+#run the above multiple times to get different numbers
+
+#generate a random float between 0 and 1
+rf = random.rand()
+print(rf)
+
+
+#Generate a 1D array with 5 integers from 0 to 100
+ri_arr = random.randint(100, size=(5))
+print(ri_arr)
+
+
+#Generate a 2-D array with 3 rows, each row with 5 random integers from 0 to 100
+ri2d_ar = random.randint(100, size=(3, 5))
+print(ri2d_ar)
+
+#create 1-D array with 5 random floats
+rf_arr = random.rand(5)
+print(rf_arr)
+
+#generate 2-D array with 3 rows, each with 5 random floats
+rf2d_arr = random.rand(3, 5)
+print(rf2d_arr)
+
+
+#choice() method in random
+
+#return a random value from a predefined array
+rc = random.choice([3, 5, 7, 9])
+print(rc)
+
+#return random string
+rs = random.choice(['f', 'v', '7', 'd'])
+print(rs)
+
+
+#use choice method with size parameter to return an array of values 
+rc_arr = random.choice([3,5,7,9], size=(3,5))
+print(rc_arr)
+
+
+#Data Distribution
+#create a 1-D array with a defined distibution of 100 elements
+#distribution 3 = 10%, 5 = 30%, 7 = 60%, 9 = 0%
+#in random.choice, the first array is the elements, the second array is probability linked by index (use p= to set the Probability parameter), then size of array
+rcd_arr = random.choice([3, 5, 7, 9], p=[0.1, 0.3, 0.6, 0.0], size=(100))
+print(rcd_arr)
+
+#with the same distribution as above, create a 3 by 5 2-D array
+rcd2d_arr = random.choice([3, 5, 7, 9], p=[0.1, 0.3, 0.6, 0.0], size=(3,5))
+print(rcd2d_arr)
+
+
+#Random Permitations of Elements
+
+#Shuffle
+test_arr = np.array([1, 2, 3, 4, 5])
+
+#this will randomly re-order the elements and modify test_arr
+random.shuffle(test_arr)
+print(test_arr)
+
+
+#Permutation
+test2_arr = np.array([1,2,3,4,5])
+#returns a re-ordered array, but does not modify the source array
+print(random.permutation(test2_arr))
+print(test2_arr)
+
+
+
+########
+#Seaborn Module 
+#requires Matplotlib module
+########
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+
+#plotting a Distplot
+sns.distplot([0,1,2,3,4,5])
+plt.show()
+
+#plot without histogram
+sns.distplot([0,1,2,3,4,5], hist=False)
+plt.show()
+
+
+#Normal Distribution
+
+#generate a random normal distrubution size 2x3 (2 rows, 3 elements per row)
+nd2x3 = random.normal(size=(2,3))
+print(nd2x3)
+
+#generate a random normal distribution with a mean at 1 and standard deviation at 2
+#parameters loc=mean, scale=standard deviation, size=size of array
+nd2x3m1sd2_arr = random.normal(loc=1, scale=2, size=(2,3))
+print(nd2x3m1sd2_arr)
+
+#visualization of Normal Distribution
+sns.distplot(random.normal(size=1000), hist=False)
+plt.show()
+
+
+#Binomial Distibution
+
+#binomial distributions are for the outcomes fo binary scenarios (flip of coin, positive/negative)
+#random.binomial parameters n=number of trials, p=probability of occurence of each trial, size=shape of the returned array
+#return 10 trials of flipping a coin for 10 data points
+bd = random.binomial(n=10, p=.5, size=1000)
+print(bd)
+#This represents 100 flips of a coin, values in array the number of True(?) occurences
+
+#visualize the above binomial distribution
+sns.distplot(bd, hist=True, kde=False)
+plt.show()
+
+
+#normal distribution & random distribution comparison
+#copied from: https://www.w3schools.com/python/numpy/numpy_random_binomial.asp 
+sns.distplot(random.normal(loc=50, scale=5, size=1000), hist=False, label='normal')
+sns.distplot(random.binomial(n=100, p=0.5, size=1000), hist=False, label='binomial')
+
+plt.show()
+
+
+
+#Poisson Distribution
+#Estimation of how many times an even can occur in a specified time (If someone eats twice in a day, will they eat a third time)
+#random.poisson parameters lam=rate or known number of occurences, size=shape of the returned array
+
+#generate 1x10 poisson distribution for occurance of 2
+pd_arr = random.poisson(lam=2, size=10)
+print(pd_arr)
+
+#visualiztion of above with 1000 elements
+pd1000_arr = random.poisson(lam=2, size=1000)
+sns.distplot(pd1000_arr, kde=False)
+plt.show()
+
+
+#start at Uniform Distribution next time: https://www.w3schools.com/python/numpy/numpy_random_uniform.asp 
 
 
