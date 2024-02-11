@@ -472,6 +472,17 @@ filtered_arr = uf_arr[filter]
 print(filtered_arr)
 
 
+#retest the above with a larger array than filter
+uf_arr = np.array([41, 42, 43, 44, 45, 46, 47, 48])
+
+#array of boolean values
+filter = [True, False, True, False]
+
+#This doesn't work, the size of the source and filter arrays must match
+filtered_arr = uf_arr[filter]
+print(filtered_arr)
+
+
 #Conditional Filter
 #Create a filter that will puts elements with a value greater than 42 in a new array
 
@@ -686,6 +697,80 @@ sns.distplot(pd1000_arr, kde=False)
 plt.show()
 
 
-#start at Uniform Distribution next time: https://www.w3schools.com/python/numpy/numpy_random_uniform.asp 
+#Uniform Distribution https://www.w3schools.com/python/numpy/numpy_random_uniform.asp 
+
+
+#Create a 2x3 uniform distribution sample
+x = random.uniform(size=(2,3))
+print(x)
+
+
+#Visualize a random distribution
+sns.distplot(random.uniform(size=1000), hist=False)
+plt.show()
+
+
+#Logistic Distribution
+#Used to describe growth
+#used extensively in logistic regression & neural networks
+
+#create 2x3 array from a logistic distributin with a mean at 1 and standard deviation 2.0 
+# loc = mean
+# scale = standard deviation
+# size = shape pf the array
+x = random.logistic(loc=1, scale=2, size=(2,3))
+print(x)
+
+#visualise a logistic distribution
+sns.distplot(random.logistic(size=1000), hist=False)
+plt.show()
+
+#visualize a normal & random distribution
+sns.distplot(random.normal(scale=2, size=1000), hist=False, label='normal')
+sns.distplot(random.logistic(size=1000), hist=False, label='logistic')
+plt.show()
+
+
+#Multinomial Distribution
+#show the distribution of rolling a six sided dice
+# n = number of possible outcomes
+# pvals = list of probabilities of the outcomes
+#size = shape of the array
+x = random.multinomial(n=6, pvals=[1/6, 1/6, 1/6, 1/6, 1/6, 1/6])
+print(x)
+
+# Exponential Distribution
+#descripts the until the next even (failure/success)
+# scale = the inverse of rate
+# size = shape of the array
+x = random.exponential(scale=2, size=(2,3))
+print(x)
+
+#visualise exponential distribution
+sns.distplot(random.exponential(size=1000), hist=False)
+plt.show()
+
+# https://www.w3schools.com/python/numpy/numpy_random_exponential.asp Quote from bottom the page:
+#Relation Between Poisson and Exponential Distribution
+#Poisson distribution deals with number of occurences of an event in a time period whereas exponential distribution deals with the time between these events.
+
+
+# Chi Square Distribution
+#Used as a basis to verify the hypothesis
+
+# df = degree of freedom
+# size = shape of the returned array
+x = random.shisquare(df=2, size=(2,3))
+print(x)
+
+#visualize Chi Square
+sns.distplot(random.chisquare(df=1, size=1000), hist=False)
+plt.show()
+
+#Skipping Rayeigh, Pareto & Zipf distributions
+
+
+
+
 
 
