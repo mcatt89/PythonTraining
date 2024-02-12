@@ -6,7 +6,7 @@ Feel free to reference this repository to help with your learning, but check eve
 
 I'm running Python 3.12 in Windows 11 at the original creation
 
-There is no garuntee or warranty on this code
+There is no gauruntee or warranty on this code
 
 -Matt Herman
 January 28, 2024
