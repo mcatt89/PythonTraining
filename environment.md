@@ -12,15 +12,18 @@ commands below are from Win11, run in PowerShell Administrative terminal
 upgrade pip as needed
 py -m pip install --upgrade pip
 
-numpy
+numpy:
 py -m pip install numpy
 
-pandas
+pandas:
 py -m pip install pandas
 
-seaborn
+seaborn:
 py -m pip install seaborn
 
-matplotlib
+matplotlib:
 py -m pip install matplotlib
 
+scikit-learn: 
+py -m pip install -U scikit-learn
+NOTE: after install that is a capitol U 
